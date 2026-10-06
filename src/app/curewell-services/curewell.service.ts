@@ -73,9 +73,10 @@ export class CurewellService {
   }
 
   //RemoveDoctor
-  deleteDoctor(doctor: Doctor) {
-    //To do implement necessary logic
-    return null;
+  deleteDoctor(doctor: Doctor): Observable<boolean> {
+    return this.http
+      .request<boolean>('delete', this.baseUrl + 'DeleteDoctor', { body: doctor })
+      .pipe(catchError(this.errorHandler));
   }
 
   //ErrorHandler
