@@ -43,8 +43,10 @@ export class CurewellService {
 
   //AddDoctor
   addDoctor(doctorName: string): Observable<boolean> {
-    //To do implement necessary logic
-    return null;
+    const doctor: Doctor = { doctorId: 0, doctorName: doctorName };
+    return this.http
+      .post<boolean>(this.baseUrl + 'AddDoctor', doctor)
+      .pipe(catchError(this.errorHandler));
   }
 
   //EditDoctor
