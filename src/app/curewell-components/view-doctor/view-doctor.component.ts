@@ -39,7 +39,7 @@ export class ViewDoctorComponent implements OnInit {
   }
 
   editDoctorDetails(doctor: Doctor) {
-    //To do implement necessary logic
+    this.router.navigate(['/editDoctorDetails', doctor.doctorId, doctor.doctorName]);
   }
 
   removeDoctor(doctor: Doctor) {
