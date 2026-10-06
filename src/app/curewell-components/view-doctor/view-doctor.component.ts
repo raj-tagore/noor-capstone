@@ -27,7 +27,7 @@ export class ViewDoctorComponent implements OnInit {
       (success) => {
         this.doctorList = success;
         this.showMsgDiv = true;
-        console.log('Doctors fetched successfully');
+        console.log('Doctors Fetched Successfully');
       },
       (error) => {
         this.doctorList = null;
