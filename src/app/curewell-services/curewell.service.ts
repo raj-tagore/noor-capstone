@@ -36,8 +36,9 @@ export class CurewellService {
 
   //GetSurgeries
   getAllSurgeriesForToday(): Observable<Surgery[]> {
-    //To do implement necessary logic
-return null;
+    return this.http
+      .get<Surgery[]>(this.baseUrl + 'GetAllSurgeryTypeForToday')
+      .pipe(catchError(this.errorHandler));
   }
 
   //AddDoctor
