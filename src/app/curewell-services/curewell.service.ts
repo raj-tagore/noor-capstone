@@ -59,8 +59,17 @@ export class CurewellService {
 
   //editSurgery
   editSurgery(doctorId: number, endTime: number, startTime: number, surgeryCategory: string, surgeryDate: Date, surgeryId: number): Observable<boolean> {
-    //To do implement necessary logic
-    return null;
+    const surgery: Surgery = {
+      doctorId: doctorId,
+      endTime: endTime,
+      startTime: startTime,
+      surgeryCategory: surgeryCategory,
+      surgeryDate: surgeryDate as unknown as string,
+      surgeryId: surgeryId
+    };
+    return this.http
+      .put<boolean>(this.baseUrl + 'UpdateSurgery', surgery)
+      .pipe(catchError(this.errorHandler));
   }
 
   //RemoveDoctor
