@@ -16,10 +16,21 @@ export class ViewSpecializationComponent implements OnInit {
   constructor(private _curewellService: CurewellService, private router: Router) { }
 
   ngOnInit() {
-    //To do implement necessary logic
+   this.getSpecialization();
   }
 
   getSpecialization() {
+
+     this._curewellService.getAllSpecializations().subscribe({
+     next: (res) => {
+      this.specializationList = res;
+     },
+     error: (error) => {
+      this.specializationList = null;
+      this.errorMsg = error;
+     }
+     })
+
     //To do implement necessary logic
   }
 }

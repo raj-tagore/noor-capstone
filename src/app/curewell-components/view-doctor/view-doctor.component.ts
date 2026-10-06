@@ -23,19 +23,19 @@ export class ViewDoctorComponent implements OnInit {
   }
 
   getDoctor() {
-    this._curewellService.getDoctors().subscribe(
-      (success) => {
-        this.doctorList = success;
+    this._curewellService.getDoctors().subscribe({
+      next: (res) => {
+        this.doctorList = res;
         this.showMsgDiv = true;
         console.log('Doctors Fetched Successfully');
       },
-      (error) => {
+      error: (error) => {
         this.doctorList = null;
         this.errorMsg = error;
         this.showMsgDiv = true;
         console.log('Error fetching doctors');
       }
-    )
+    });
   }
 
   editDoctorDetails(doctor: Doctor) {

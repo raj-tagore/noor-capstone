@@ -11,6 +11,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CurewellService {
+  private readonly baseUrl = "http://localhost:5109/api/CureWell/"
 
   doctorList: Doctor[]=[];
   surgeryList: Surgery[]=[];
@@ -22,20 +23,21 @@ export class CurewellService {
   //GetDoctor
   getDoctors(): Observable<Doctor[]> {
     return this.http
-      .get<Doctor[]>('http://localhost:5109/api/CureWell/GetDoctors')
+      .get<Doctor[]>(this.baseUrl+'GetDoctors')
       .pipe(catchError(this.errorHandler));
   }
 
   //GetSpecialization
   getAllSpecializations(): Observable<Specialization[]> {
    //To do implement necessary logic
-    return null;
+    return this.http
+      .get<Specialization[]>(this.baseUrl+'GetSpecializations').pipe(catchError(this.errorHandler));
   }
 
   //GetSurgeries
   getAllSurgeriesForToday(): Observable<Surgery[]> {
     //To do implement necessary logic
-    return null;
+return null;
   }
 
   //AddDoctor
